@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Head from "next/head"
 import { supabase } from "../utils/supabase"
 import Navigation from "../components/navigation"
 import ModernUploadModal from "../components/modern-upload-modal"
@@ -47,6 +48,10 @@ export default function Home() {
   }
 
   return (
+    <>
+    <Head>
+      <title>我的音乐空间</title>
+    </Head>
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50">
       <Navigation onUploadClick={() => setShowUpload(true)} />
 
@@ -73,5 +78,6 @@ export default function Home() {
 
       {showUpload && <ModernUploadModal onClose={() => setShowUpload(false)} onUploadSuccess={handleUploadSuccess} />}
     </div>
+    </>
   )
 }
